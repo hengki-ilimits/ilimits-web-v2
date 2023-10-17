@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>News Ticker with Anime.js</title>
+		<!-- Include Anime.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<link href="output.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- News ticker container -->
+		<div id="container" class="overflow-hidden py-20 mx-auto rotate-3">
+			<div id="textContainer" class="flex py-12 bg-black text-white">
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+				<div class="flex flex-col justify-between h-96">
+					<h3 class="text-center">iLimits News</h3>
+					<h3 class="text-center">iLimits News</h3>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const container = document.querySelector("#container");
+			const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+			container.style.width = `1000px`;
+			textContainer.style.width = `2000px`;
+			for (let n = 0; n < textContainer.children.length; n++) {
+				const child = textContainer.children[n];
+				child.style.width = `200px`;
+			}
+
+			// Initialize Anime.js animation
+			const newsTextElement = document.getElementById("textContainer");
+
+			const animeAnimation = anime({
+				targets: newsTextElement,
+				translateX: [
+					// { value: "0px", duration: 0 }, // Initial position (off-screen)
+					{ value: "-1000px", duration: 8000 }, // Final position (off-screen)
+				],
+				easing: "linear",
+				loop: true,
+				direction: "normal",
+			});
+
+			// Pause the animation on hover
+			container.addEventListener("mouseenter", () => {
+				animeAnimation.pause();
+			});
+
+			// Resume the animation when the mouse leaves
+			container.addEventListener("mouseleave", () => {
+				animeAnimation.play();
+			});
+		</script>
+	</body>
+</html>

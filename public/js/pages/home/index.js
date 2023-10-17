@@ -41,6 +41,84 @@ const instrumentsLogo = [
 	},
 ];
 
+const homeMenuNav = [
+	{
+		id: "hmn1",
+		label: "Trading",
+		href: "/trading/",
+	},
+	{
+		id: "hmn2",
+		label: "Platform",
+		href: "/platform/",
+	},
+	{
+		id: "hmn3",
+		label: "Promotions",
+		href: "/promotion/",
+	},
+	{
+		id: "hmn4",
+		label: "About",
+		href: "/aboutUs/",
+	},
+	{
+		id: "hmn5",
+		label: "Regulations",
+		href: "/regulations/",
+	},
+];
+
+function renderNewsSection() {
+	const container = document.querySelector("#container");
+	const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+	container.style.width = `100%`;
+	textContainer.style.width = `2000px`;
+	for (let n = 0; n < textContainer.children.length; n++) {
+		const child = textContainer.children[n];
+		child.style.width = `200px`;
+	}
+
+	// Initialize Anime.js animation
+	const newsTextElement = document.getElementById("textContainer");
+
+	const animeAnimation = anime({
+		targets: newsTextElement,
+		translateX: [
+			// { value: "0px", duration: 0 }, // Initial position (off-screen)
+			{ value: "-400px", duration: 3000 }, // Final position (off-screen)
+		],
+		easing: "linear",
+		loop: true,
+		direction: "normal",
+	});
+
+	// Pause the animation on hover
+	container.addEventListener("mouseenter", () => {
+		animeAnimation.pause();
+	});
+
+	// Resume the animation when the mouse leaves
+	container.addEventListener("mouseleave", () => {
+		animeAnimation.play();
+	});
+}
+
+function renderHomeMenuNavSection() {
+	const container = [
+		`<div class="flex flex-col lg:flex-row lg:justify-center gap-2 px-2 lg:px-12 my-12">`,
+	];
+
+	homeMenuNav.map((item) => {
+		const btn = [
+			`<a href="${item.href}" class="text-link-block-sm lg:text-link-sm lg:rounded-md">${item.label}</a>`,
+		];
+		container.push(btn);
+	});
+	container.push("</div");
+	return container.join("");
+}
+
 function renderTradableInstrumentSection() {
 	const headingText = "A World of Financial Markets in the Palm of Your Hand";
 	const subheadingText =
@@ -48,7 +126,7 @@ function renderTradableInstrumentSection() {
 
 	const buttonLabel = "See All Tradable Instruments";
 
-	const container = [`<div class="px-4 lg:px-20 py-20 bg-slate-100">`];
+	const container = [`<div class="px-4 lg:px-20 py-20">`];
 	const heading = [`<h1 class="text-gray-900 font-semibold text-center">${headingText}</h1>`];
 	const subHeading = [`<h4 class="text-gray-900 text-center">${subheadingText}</h4>`];
 
@@ -110,8 +188,13 @@ function renderPartnershipSection() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	const homeMenuNav = document.getElementById("homeMenuNav");
+	homeMenuNav.innerHTML = renderHomeMenuNavSection();
+
 	const tradableInstrumentSection = document.getElementById("tradableInstrument");
 	tradableInstrumentSection.innerHTML = renderTradableInstrumentSection();
+
+	renderNewsSection();
 
 	const partnership = document.getElementById("partnership");
 	partnership.innerHTML = renderPartnershipSection();

@@ -14,11 +14,15 @@ module.exports = {
 		extend: {
 			colors: {
 				baseGreen: "hsl(115, 43%, 52%)",
+				baseOrange: "hsl(36, 97%, 62%)",
 			},
 			maxWidth: {
 				"1/3": "33%",
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require("daisyui")],
+	daisyui: {
+		themes: ["light"],
+	},
 };

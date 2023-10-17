@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Country Selector</title>
+		<style>
+			/* Styles for the button */
+			.country-selector {
+				display: inline-block;
+				position: relative;
+				cursor: pointer;
+			}
+
+			.flag-icon {
+				width: 30px;
+				height: 20px;
+				margin-right: 10px;
+				vertical-align: middle;
+			}
+
+			/* Styles for the dropdown */
+			.country-dropdown {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				display: none;
+				background-color: #fff;
+				border: 1px solid #ccc;
+				border-top: none;
+			}
+
+			.country-option {
+				display: flex;
+				align-items: center;
+				padding: 5px;
+				cursor: pointer;
+			}
+
+			.country-option input[type="radio"] {
+				margin-right: 10px;
+			}
+
+			/* Show the dropdown when the button is clicked */
+			.country-selector.active .country-dropdown {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Button with a country flag icon -->
+		<div class="country-selector">
+			<img src="england-flag.png" alt="England Flag" class="flag-icon" />
+			Select Country
+			<div class="country-dropdown">
+				<!-- Dropdown options with radio buttons -->
+				<div class="country-option">
+					<input type="radio" name="country" id="england" value="england" />
+					<img src="england-flag.png" alt="England Flag" class="flag-icon" />
+					England
+				</div>
+				<div class="country-option">
+					<input type="radio" name="country" id="indonesia" value="indonesia" />
+					<img src="indonesia-flag.png" alt="Indonesia Flag" class="flag-icon" />
+					Indonesia
+				</div>
+				<div class="country-option">
+					<input type="radio" name="country" id="malaysia" value="malaysia" />
+					<img src="malaysia-flag.png" alt="Malaysia Flag" class="flag-icon" />
+					Malaysia
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// JavaScript to toggle the dropdown on button click
+			const countrySelector = document.querySelector(".country-selector");
+
+			countrySelector.addEventListener("click", () => {
+				countrySelector.classList.toggle("active");
+			});
+
+			// Handle radio button selection if needed
+			const radioButtons = document.querySelectorAll('input[type="radio"]');
+			radioButtons.forEach((radio) => {
+				radio.addEventListener("click", () => {
+					// Do something with the selected country (e.g., submit a form)
+					console.log(`Selected country: ${radio.value}`);
+				});
+			});
+		</script>
+	</body>
+</html>

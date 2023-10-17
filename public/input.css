@@ -46,11 +46,26 @@
 	.btn-primary-block-sm {
 		@apply bg-baseGreen text-white font-semibold h-10 w-full;
 	}
+	.btn-primary-block-xs {
+		@apply bg-baseGreen text-white font-semibold h-6 text-xs w-full;
+	}
 	.btn-primary {
 		@apply bg-baseGreen text-white font-semibold text-xl h-16 w-fit px-8;
 	}
+	.btn-primary-md {
+		@apply bg-baseGreen text-white font-semibold text-xl h-12 w-fit px-8;
+	}
 	.btn-primary-sm {
-		@apply bg-baseGreen text-white font-semibold h-10 w-fit px-8;
+		@apply bg-baseGreen text-white font-semibold h-8 w-fit px-8;
+	}
+	.btn-primary-xs {
+		@apply bg-baseGreen text-white font-semibold h-6 text-xs w-fit px-8;
+	}
+	.text-link-block-sm {
+		@apply bg-baseGreen text-white text-sm font-semibold h-8 flex justify-center items-center;
+	}
+	.text-link-sm {
+		@apply bg-baseGreen text-white text-base font-semibold h-10 px-12 flex justify-center items-center;
 	}
 }
 

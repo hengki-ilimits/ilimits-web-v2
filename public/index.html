@@ -10,41 +10,130 @@
 		<link
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"
 			rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 		<title>iLimits - The Best International Online Forex Broker</title>
 	</head>
 	<body>
 		<div class="container mx-auto">
-			<section id="tradableInstrument">
-				<!-- <div class="flex flex-col items-center gap-12 py-20 px-4">
-					<div class="flex w-full md:w-auto justify-center gap-8 sm:gap-20 lg:gap-40">
-						<div
-							class="flex flex-col w-8 lg:w-16 items-center gap-6 cursor-pointer hover:underline">
-							<img src="assets/img/icons/Forex-icon-black.svg" />
-							<h6 class="font-bold text-gray-600 text-xs sm:text-sm">Forex</h6>
+			<nav id="navbar" class="sticky top-0 bg-white border-b-2 border-slate-100 z-50">
+				<div class="w-full h-20 py-4 px-8 flex justify-between">
+					<div>
+						<a href="#">
+							<img src="assets/img/logo.svg" />
+						</a>
+					</div>
+					<div class="flex items-center gap-4">
+						<div class="dropdown">
+							<label tabindex="0"
+								><div
+									class="w-12 hover:bg-baseOrange cursor-pointer h-8 flex justify-center items-center rounded-lg">
+									<img
+										src="assets/img/icons/flag-language-circle/flag-united-kingdom.png"
+										class="h-1/2" /></div
+							></label>
+							<ul
+								tabindex="0"
+								class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 font-semibold">
+								<li class="hover:bg-baseGreen rounded-md">
+									<a
+										><div class="w-12 h-8 flex justify-center items-center rounded-lg">
+											<img
+												src="assets/img/icons/flag-language-circle/flag-united-kingdom.png"
+												class="h-1/2" />
+										</div>
+										English</a
+									>
+								</li>
+								<li class="hover:bg-baseGreen rounded-md">
+									<a
+										><div class="w-12 h-8 flex justify-center items-center rounded-lg">
+											<img
+												src="assets/img/icons/flag-language-circle/flag-indonesia.png"
+												class="h-1/2" />
+										</div>
+										Indonesia</a
+									>
+								</li>
+								<li class="hover:bg-baseGreen rounded-md">
+									<a
+										><div class="w-12 h-8 flex justify-center items-center rounded-lg">
+											<img
+												src="assets/img/icons/flag-language-circle/flag-malaysia.png"
+												class="h-1/2" />
+										</div>
+										Malaysia</a
+									>
+								</li>
+							</ul>
 						</div>
-						<div
-							class="flex flex-col w-8 lg:w-16 items-center gap-6 cursor-pointer hover:underline">
-							<img src="assets/img/icons/icon-metals.svg" />
-							<h6 class="font-bold text-gray-600 text-xs sm:text-sm">Metals</h6>
+						<button
+							class="hover:bg-baseOrange text-gray-700 border border-gray-300 font-semibold rounded-lg px-4 h-8">
+							Login
+						</button>
+						<button
+							class="bg-baseGreen hover:bg-baseOrange text-white font-semibold rounded-lg px-4 h-8">
+							Register Now</button
+						><span class="cursor-pointer material-symbols-outlined"> menu </span>
+					</div>
+				</div>
+			</nav>
+			<section id="homeMenuNav"></section>
+			<section id="tradingInstrument">
+				<div class="flex flex-col lg:flex-row h-96">
+					<div class="bg-black w-1/2"><h1>Trade With Us</h1></div>
+					<div class="bg-zinc-900 w-1/2"><h1>Description</h1></div>
+				</div>
+			</section>
+			<section id="tradableInstrument"></section>
+			<section id="ilimitsNews" class="overflow-hidden">
+				<!-- News ticker container -->
+				<div id="container" class="overflow-hidden py-20 mx-auto rotate-3">
+					<div id="textContainer" class="flex py-12 bg-black text-baseGreen font-semibold">
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
 						</div>
-						<div
-							class="flex flex-col w-8 lg:w-16 items-center gap-6 cursor-pointer hover:underline">
-							<img src="assets/img/icons/icon-stocks.svg" />
-							<h6 class="font-bold text-gray-600 text-xs sm:text-sm">Stocks</h6>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
 						</div>
-						<div
-							class="flex flex-col w-8 lg:w-16 items-center gap-6 cursor-pointer hover:underline">
-							<img src="assets/img/icons/icon-indices.svg" />
-							<h6 class="font-bold text-gray-600 text-xs sm:text-sm">Indices</h6>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
 						</div>
-						<div
-							class="flex flex-col w-8 lg:w-16 items-center gap-6 cursor-pointer hover:underline">
-							<img src="assets/img/icons/icon-energy.svg" />
-							<h6 class="font-bold text-gray-600 text-xs sm:text-sm">Energy</h6>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
+						</div>
+						<div class="flex flex-col justify-between h-96">
+							<h3 class="text-center">iLimits News</h3>
+							<h3 class="text-center">iLimits News</h3>
 						</div>
 					</div>
-					<button class="btn-primary-block-sm lg:btn-primary">See All Tradable Instruments</button>
-				</div> -->
+				</div>
 			</section>
 			<section id="partnership"></section>
 			<section id="newsletter"></section>
@@ -62,6 +151,7 @@
 			</footer>
 		</div>
 		<script src="js/pages/home/index.js"></script>
+		<script src="js/components/navbar.js"></script>
 		<script src="js/components/newsletter.js"></script>
 		<script src="js/components/footer.js"></script>
 	</body>

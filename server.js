@@ -1,16 +1,18 @@
-// Import necessary modules
 const express = require("express");
 const { config } = require("dotenv");
+const bodyParser = require("body-parser");
 
-const app = express();
+const { port } = require("./src/config/config.js");
+const apiRoutes = require("./src/routes/api");
 
 config();
-const port = process.env.PORT || 3000; // Default to 3000 if PORT is not defined in .env
 
-// Serve static files from the 'public' folder
+// remember to secure your api
+
+const app = express();
+app.use(express.json());
 app.use(express.static("public"));
-
-// Start the server
+app.use("/", apiRoutes);
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });

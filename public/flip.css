@@ -1,0 +1,39 @@
+/* Styling for the text container */
+.container {
+	height: 250px;
+	overflow: hidden;
+}
+.container2 {
+	height: 50px;
+	overflow: hidden;
+}
+.text-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 500px;
+}
+.text-container2 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 500px;
+}
+
+/* Styling for the animated text */
+.animated-text {
+	border: 1px solid gray;
+	height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+.animated-text2 {
+	border: 1px solid gray;
+	height: 50px;
+	font-size: 12px;
+	font-weight: bold;
+	vertical-align: middle;
+}

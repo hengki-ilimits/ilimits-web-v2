@@ -40,37 +40,152 @@
 }
 
 @layer components {
-	.btn-primary-block {
-		@apply bg-baseGreen text-white font-semibold text-xl h-16 w-full;
+	.tombol {
+		@apply text-white text-center flex justify-center items-center bg-baseGreen px-4 py-2 text-sm hover:bg-baseOrange w-fit min-w-[10rem] rounded-md font-semibold;
 	}
-	.btn-primary-block-sm {
-		@apply bg-baseGreen text-white font-semibold h-10 w-full;
+	.tombol-lg {
+		@apply text-white text-center flex justify-center items-center bg-baseGreen px-8 py-3 text-base hover:bg-baseOrange w-fit min-w-[10rem] rounded-md font-semibold;
 	}
-	.btn-primary-block-xs {
-		@apply bg-baseGreen text-white font-semibold h-6 text-xs w-full;
+	.tombol-block {
+		@apply text-white text-center flex justify-center items-center bg-baseGreen px-4 py-2 text-sm hover:bg-baseOrange w-full rounded-md font-semibold;
 	}
-	.btn-primary {
-		@apply bg-baseGreen text-white font-semibold text-xl h-16 w-fit px-8;
+	.tombol-sedeng {
+		@apply px-8 py-4 text-xl font-semibold;
 	}
-	.btn-primary-md {
-		@apply bg-baseGreen text-white font-semibold text-xl h-12 w-fit px-8;
+
+	.widget {
+		@apply bg-baseGreen text-white flex justify-center items-center h-10 w-full rounded;
 	}
-	.btn-primary-sm {
-		@apply bg-baseGreen text-white font-semibold h-8 w-fit px-8;
+
+	.text-btn {
+		@apply text-white bg-baseGreen px-6 py-px text-sm flex justify-center items-center w-fit hover:bg-baseOrange font-semibold rounded-lg;
 	}
-	.btn-primary-xs {
-		@apply bg-baseGreen text-white font-semibold h-6 text-xs w-fit px-8;
+
+	.text-btn-outline-gray {
+		@apply text-gray-600 border-2 border-gray-300 px-6 py-px text-sm flex justify-center items-center w-fit hover:bg-baseOrange font-semibold rounded-lg;
 	}
-	.text-link-block-sm {
-		@apply bg-baseGreen text-white text-sm font-semibold h-8 flex justify-center items-center;
+	.subtext-info {
+		@apply text-gray-600 text-sm;
 	}
-	.text-link-sm {
-		@apply bg-baseGreen text-white text-base font-semibold h-10 px-12 flex justify-center items-center;
+	.subtext-success {
+		@apply text-baseGreen text-sm font-semibold;
+	}
+	.subtext-danger {
+		@apply text-red-500 text-sm font-semibold;
+	}
+	.featureBox {
+		@apply flex flex-col border border-gray-200 py-20 px-4 shadow-gray-300 shadow-xl items-center gap-6 text-center;
 	}
 }
 
 @layer utilities {
 	.text-link {
-		@apply text-baseGreen font-semibold;
+		@apply text-baseGreen font-semibold hover:underline;
 	}
+
+	.text-link-danger {
+		@apply text-red-500 font-semibold hover:underline;
+	}
+
+	.menu-link {
+		@apply font-semibold text-gray-600 text-base hover:underline;
+	}
+
+	#tradingInstrumentLabel .text-container {
+		@apply h-36 overflow-hidden;
+	}
+
+	#tradingInstrumentLabel .animated-text-container {
+		@apply h-[96rem];
+	}
+
+	#tradingInstrumentLabel .animated-text {
+		@apply h-12 text-3xl font-semibold text-green-950;
+	}
+
+	#tradingInstrumentDescription .text-container {
+		@apply h-60 overflow-hidden;
+	}
+
+	#tradingInstrumentDescription .animated-text-container {
+		@apply h-[480rem];
+	}
+
+	#tradingInstrumentDescription .animated-text {
+		@apply h-60;
+	}
+
+	.carousel-container {
+		@apply w-[300rem];
+	}
+
+	.carousel-items {
+		@apply w-1/4;
+	}
+
+	#sidebar .outerContainer {
+		@apply flex flex-col w-full h-full overflow-scroll;
+	}
+}
+
+/* custom style*/
+.sidebar-sm {
+	position: fixed;
+	top: 0;
+	z-index: 40;
+	height: 100%;
+	width: 100%;
+	left: 2000px;
+	background-color: white;
+}
+
+/* Loader */
+.loader3 {
+	width: 1rem;
+	height: 1rem;
+	border: 0.2rem solid #fff;
+	border-bottom-color: #59b950;
+	border-radius: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+/* #Loader */
+
+/* Text Blinking */
+.triple-blink {
+	transition: color 0.3s ease-in-out;
+	animation: none;
+}
+
+@keyframes blink {
+	0%,
+	30%,
+	60%,
+	90% {
+		color: rgb(239 68 68);
+	}
+	15%,
+	45%,
+	75% {
+		color: rgb(241 245 249);
+	}
+	100% {
+		color: rgb(239 68 68);
+	}
+}
+/* #Text Blinking */
+
+.featureBox > img {
+	max-width: 100px;
+	max-height: 100px;
 }

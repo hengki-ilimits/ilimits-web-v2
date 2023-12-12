@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Language Switcher Example</title>
+		<style>
+			/* Basic styling for demonstration */
+			body {
+				font-family: Arial, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 data-translate="hello">Hello</h1>
+		<p data-translate="greeting">This is a simple language switcher example.</p>
+		<button onclick="changeLanguage('en')">English</button>
+		<button onclick="changeLanguage('es')">Spanish</button>
+
+		<script>
+			const translations = {
+				hello: {
+					en: "Hello",
+					es: "Hola",
+				},
+				greeting: {
+					en: "This is a simple language switcher example.",
+					es: "Esto es un ejemplo simple de cambio de idioma.",
+				},
+				// Add more translations as needed...
+			};
+
+			function changeLanguage(selectedLanguage) {
+				const elements = document.querySelectorAll("[data-translate]");
+
+				elements.forEach((element) => {
+					const key = element.getAttribute("data-translate");
+					element.textContent = translations[key][selectedLanguage];
+				});
+			}
+		</script>
+	</body>
+</html>

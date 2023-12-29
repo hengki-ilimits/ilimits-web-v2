@@ -1,5 +1,4 @@
-const SocialMediaModel = require("../models/socialMediaModel.js");
-const fs = require("fs");
+const SocialMediaModel = require("../models/SocialMediaModel");
 
 // Service function to retrieve all promotions
 const findAll = async () => {
@@ -7,11 +6,9 @@ const findAll = async () => {
 		return await SocialMediaModel.findAll();
 	} catch (error) {
 		console.log(error);
-		throw new Error("Error fetching SocialMediaModel");
+		throw new Error("Error fetching All SocialMediaModel");
 	}
 };
-
-// Service function to create a new promotion
 
 module.exports = {
 	findAll,

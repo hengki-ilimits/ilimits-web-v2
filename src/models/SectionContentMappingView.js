@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database"); // Your Sequelize instance
 
-const SocialMediaModel = sequelize.define(
-	"socialmedia",
+const SectionContentMappingView = sequelize.define(
+	"section_content_mapping_view",
 	{
 		id: {
 			type: DataTypes.STRING,
@@ -10,39 +10,51 @@ const SocialMediaModel = sequelize.define(
 			primaryKey: true,
 			unique: true,
 		},
-		name: {
+		sectionName: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		href: {
+		elementId: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		visibility: {
-			type: DataTypes.INTEGER,
-			allowNull: true,
-		},
-		createdAt: {
+		contentHeading: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		createdBy: {
+		contentSubHeading: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		modifiedAt: {
+		contentParagraph: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		modifiedBy: {
+		contentFootNote: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		contentButtonLabel: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		contentButtonHref: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		contentImageId: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		contentImageHref: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
 	},
 	{
-		tableName: "socialmedia",
+		tableName: "section_content_mapping_view",
 		timestamps: false,
 	}
 );
 
-module.exports = SocialMediaModel;
+module.exports = SectionContentMappingView;

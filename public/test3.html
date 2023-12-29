@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>TEST</h1>
+		<div id="table-container"></div>
+	</body>
+	<script>
+		const tableContainer = document.getElementById("table-container");
+
+		// Function to fetch data from the server
+		function fetchEmployeeData() {
+			fetch("/api/testRender") // Assuming '/employees' is the route in your Express.js server
+				.then((response) => response.text())
+				.then((html) => {
+					// Display the received HTML containing the table of employees
+					tableContainer.innerHTML = html;
+				})
+				.catch((error) => console.error(error));
+		}
+
+		// Call the function to fetch data when the page loads or when needed
+		fetchEmployeeData();
+	</script>
+</html>

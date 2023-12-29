@@ -1,51 +1,55 @@
-function DownloadMetatraderSectionComponent(contentData) {
-	const { heading, textContent, buttonLabel } = contentData;
-
-	const container = [`<div class="flex flex-col items-center md:flex-row">`];
-
-	const downloadMetatraderComponent = [
-		`<div class="flex flex-col md:w-1/2 lg:w-3/4">`,
-		`   <h2 class="mb-2 font-semibold text-center md:text-start">${heading}</h2>`,
-		`   <p class="mb-8 text-center md:text-start">${textContent}</p>`,
-		`   ${addCssClassToHtmlTag(buttonLabel, "a", "tombol-block md:tombol-lg self-end")}`,
-		`</div>`,
-		`<div class="mx-auto">`,
-		`	<img src="${IMAGE_BASE_URL}phone_14_no_bg.png" />`,
-		`</div>`,
-	].join("");
-
-	container.push(downloadMetatraderComponent);
-	container.push(`</div>`);
-
-	return container.join("");
-}
-
-// ===FETCHING
-function fetchData(callback, endPoint) {
-	fetch(`/api/${endPoint}`)
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-			return response.json();
-		})
-		.then((items) => {
-			if (items.length > 0) {
-				// callback(items);
-			} else {
-				throw new Error("Something went wrong");
-			}
-		})
-		.catch((error) => {
-			console.error(`Error fetching and rendering ${endPoint}:, ${error}`);
-			// callback();
-		});
-}
-
 function renderDownloadMetatrader() {
 	const downloadMetatrader = document.getElementById("downloadMetatrader");
+	downloadMetatrader.innerHTML = SectionPlaceholderComponent();
 
-	fetchData((data) => {
-		downloadMetatrader.innerHTML = DownloadMetatraderSectionComponent(data[0]);
-	}, "downloadMetatrader");
+	requestComponent((returnedData) => {
+		function composeComponent(metatraderData) {
+			const metatraderComponent = [`<div class="flex flex-col items-center md:flex-row gap-8">`];
+			metatraderData.map((item) => {
+				metatraderComponent.push(
+					[
+						`<div class="flex flex-col w-full md:w-3/4">`,
+						`	<h2 class="mb-2 font-semibold text-center md:text-start">${item.contentHeading}</h2>`,
+						`	<p class="mb-8 text-center md:text-start">${item.contentParagraph}</p>`,
+						`	<a href="${item.contentButtonHref}" target="_blank" class="tombol-block md:tombol-lg">${item.contentButtonLabel}</a>`,
+						`</div>`,
+					].join("")
+				);
+
+				metatraderComponent.push(
+					[
+						`<div id="${item.contentImageId}" class="mx-auto"><div class="loaderImg"></div></div>`,
+					].join("")
+				);
+
+				promiseLoadImage(item.defaultEndPoint + item.contentImageId, ["w-40", "md:w-60"]).then(
+					(loadedImage) => {
+						const figure = document.getElementById(item.contentImageId);
+						const loader = figure.querySelector("div");
+						figure.removeChild(loader);
+
+						const anchor = document.createElement("a");
+						anchor.href = item.contentImageHref;
+						anchor.target = "_blank";
+
+						anchor.appendChild(loadedImage.target);
+
+						figure.appendChild(anchor);
+					}
+				);
+			});
+
+			return metatraderComponent.join("");
+		}
+
+		promiseRender(() => composeComponent(returnedData.downloadMetatrader))
+			.then((result) => {
+				const downloadMetatrader = document.getElementById("downloadMetatrader");
+				downloadMetatrader.innerHTML = result;
+			})
+			.catch((error) => {
+				const downloadMetatrader = document.getElementById("downloadMetatrader");
+				downloadMetatrader.innerHTML = error;
+			});
+	}, "components/downloadPlatform");
 }

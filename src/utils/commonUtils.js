@@ -34,6 +34,30 @@ function convertMarkdownValuesToHTML(jsonData) {
 	return convertedJsonData;
 }
 
+function getHTML(mdFormattedData, removeDefaultTags) {
+	const renderer = new marked.Renderer();
+	renderer.link = function (href, title, text) {
+		return `<a href="${href}" target="_blank" title="${title || ""}">${text}</a>`;
+	};
+
+	marked.use({
+		breaks: true,
+		gfm: true,
+	});
+
+	let htmlFormattedData;
+
+	if (mdFormattedData && typeof mdFormattedData === "string") {
+		let cleanedContent = marked.parse(mdFormattedData, { renderer });
+		if (removeDefaultTags) {
+			cleanedContent = removePTags(cleanedContent);
+		}
+		htmlFormattedData = replaceNWithBreaks(cleanedContent);
+	}
+
+	return htmlFormattedData;
+}
+
 function convertMarkdownValuesToHTML2(jsonData, columns) {
 	const renderer = new marked.Renderer();
 	renderer.link = function (href, title, text) {
@@ -123,4 +147,5 @@ module.exports = {
 	groupByParameterToArrayOfObjects,
 	validateEmail,
 	convertMarkdownValuesToHTML2,
+	getHTML,
 };

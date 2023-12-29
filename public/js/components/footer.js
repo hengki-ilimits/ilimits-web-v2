@@ -1,157 +1,108 @@
-const companyLicenseInfo =
-	"iLimits Investment Limited Liability Company (trading name : iLimits) is incorporated in Dubai (Registered No. 2083540) with licenses No (1237919)";
+function FooterInfoMenuComponent(infoMenuItemsData, socialMediaItemsData, footerMenu) {
+	const infoAndMenuComponent = [
+		`<div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:space-x-20 lg:space-x-64 py-8">`,
+	];
+	const container = [`<div class="flex flex-col gap-8 mb-12">`];
 
-// ===COMPONENT===
-function SiteMenuSectionComponent(siteMenuData) {
-	const menu = [];
-	const htmlData = groupByParameterToArrayOfObjects(siteMenuData, "groupName");
-	htmlData.map((htmlContent) => {
-		const groupName = htmlContent.groupName;
-		const groupMenu = htmlContent.items;
+	const logo = [`<div><img src="/assets/img/logo.svg" alt="iLimits Logo" /></div>`];
+	container.push(logo);
 
-		menu.push(`<div class="flex flex-col gap-2">`);
-		menu.push(`<h6 class="font-medium text-gray-500">${groupName}</h6>`);
-		groupMenu.map((item) => {
-			menu.push(`${addCssClassToHtmlTag(item.href, "a", "menu-link")}`);
+	const licenseInfo = [
+		`<h6 id="companyLicenseInfo" class="flex text-gray-500 text-base md:text-sm font-normal">`,
+	];
+	infoMenuItemsData.map((item) => {
+		licenseInfo.push(item.contentParagraph);
+	});
+	licenseInfo.push("</h6>");
+	container.push(licenseInfo.join(""));
+
+	const socialMediaComponent = [
+		`<div id="socialMediaIconSection" class="flex flex-row gap-5 items-center">`,
+	];
+	socialMediaItemsData.map((item) => {
+		socialMediaComponent.push(
+			`<a href="${
+				item.href
+			}" target="_blank"><h2 class="bi bi-${item.name.toLowerCase()} text-gray-500"></h2></a>`
+		);
+	});
+	socialMediaComponent.push(`</div>`);
+	container.push(socialMediaComponent.join(""));
+
+	container.push("</div>");
+
+	infoAndMenuComponent.push(container.join(""));
+
+	const siteMenuComponent = [`<div id="footerSiteMenu" class="flex space-x-20 md:justify-start">`];
+	footerMenu.map((groupMenu) => {
+		siteMenuComponent.push(`<div class="flex flex-col gap-2">`);
+		siteMenuComponent.push(
+			`<h6 class="font-medium text-gray-500">${groupMenu.menu[0].groupMenuDisplayName}</h6>`
+		);
+		groupMenu.menu.map((menu) => {
+			siteMenuComponent.push(`<a class="menu-link" href="${menu.menuHref}">${menu.menuName}</a>`);
 		});
-		menu.push("</div>");
+		siteMenuComponent.push(`</div>`);
+	});
+	siteMenuComponent.push(`</div>`);
+
+	infoAndMenuComponent.push(siteMenuComponent.join(""));
+	infoAndMenuComponent.push("</div>");
+
+	return infoAndMenuComponent.join("");
+}
+
+function FooterInfoComponent(footerInfoItemsData) {
+	const footerInfoComponent = [
+		`<div id="footerInfoContainer" class="flex flex-col py-8 border-t border-gray-300 text-gray-500">`,
+	];
+
+	footerInfoItemsData.map((item) => {
+		footerInfoComponent.push(`<h5 class="font-bold">${item.contentHeading}</h5>`);
+		footerInfoComponent.push(item.contentParagraph);
+		footerInfoComponent.push(`<br/><br/>`);
 	});
 
-	return menu.join("");
-}
-
-function LicenseInfoSectionComponent(licenseInfo, socialMediaInfo) {
-	return [
-		`<div class="flex flex-col gap-8 mb-12">`,
-		` <div>`,
-		`   <img src="/assets/img/logo.svg" alt="iLimits Logo" />`,
-		` </div>`,
-		` <h6 class="text-gray-500 text-base md:text-sm font-normal">${licenseInfo}</h6>`,
-		` <div id="socialMediaIconSection" class="flex flex-row gap-5 items-center"></div>`,
-		`</div>`,
-	].join("");
-}
-
-function ErrorReloadComponent() {
-	return [
-		`<a href="#" onclick="window.location.reload();" class="flex mx-auto hover:underline">`,
-		`<h4 class="bi bi-arrow-clockwise mr-2"></h4>`,
-		`<p>Something went wrong!</p>`,
-		`</a>`,
-	].join("");
-}
-
-function FooterInfoSectionComponent(footerInfo, errorResponse) {
-	let footerInfoComponent = [`<div class="flex py-8 border-t border-gray-300 text-gray-500">`];
-
-	if (errorResponse) {
-		footerInfoComponent.push(ErrorReloadComponent());
-	} else {
-		footerInfoComponent.push(`${footerInfo}`);
-	}
-	footerInfoComponent.push(`</div>`);
+	footerInfoComponent.push("</div>");
 
 	return footerInfoComponent.join("");
 }
 
-function CopyrightSectionComponent(copyrightText, errorResponse) {
-	let copyrightComponent = [
-		`<div class="flex py-8 border-t border-gray-300 justify-start items-center text-gray-500">`,
+function CopyrightComponent(copyrightItemsData) {
+	const copyrightComponent = [
+		`<div id="footerCopyright" class="flex py-8 border-t border-gray-300 justify-start items-center text-gray-500">`,
 	];
 
-	if (errorResponse) {
-		copyrightComponent.push(ErrorReloadComponent());
-	} else {
-		copyrightComponent.push(`<p>${copyrightText}</p>`);
-	}
-	copyrightComponent.push(`</div>`);
+	copyrightItemsData.map((itemData) => {
+		copyrightComponent.push(`${itemData.contentParagraph}`);
+	});
+
+	copyrightComponent.push("</div>");
 
 	return copyrightComponent.join("");
 }
 
-// ===FETCHING
-function fetchData(callback, endPoint) {
-	fetch(`/api/${endPoint}`)
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-			return response.json();
-		})
-		.then((items) => {
-			if (items.length > 0) {
-				callback(items);
-			} else {
-				throw new Error("Something went wrong");
-			}
-		})
-		.catch((error) => {
-			console.error(`Error fetching and rendering ${endPoint}:, ${error}`);
-			callback();
-		});
-}
-
-// ===RENDER
 function renderFooter() {
-	fetchData((data) => {
-		const responseError = data === undefined;
-		const sectionId = ["footerCopyright", "footerInfo"];
-		sectionId.map((sectionIdValue) => {
-			let sectionData = {
-				textContent: "Something went wrong!",
-			};
+	const footer = document.getElementById("footer");
+	footer.innerHTML = SectionPlaceholderComponent();
 
-			if (!responseError) {
-				sectionData = data.find(
-					(sectionItem) => sectionItem.sectionId.toUpperCase() === sectionIdValue.toUpperCase()
-				);
-			}
+	requestComponent((returnedData) => {
+		function composeComponent({ copyright, footerInfo, infoAndMenu, socialMedia, siteMenu }) {
+			const components = [];
+			components.push(FooterInfoMenuComponent(infoAndMenu, socialMedia, siteMenu));
+			components.push(FooterInfoComponent(footerInfo));
+			components.push(CopyrightComponent(copyright));
+			return components.join("");
+		}
 
-			// render copyright info
-			if (sectionIdValue === "footerCopyright") {
-				const copyrightSection = document.getElementById("copyright");
-				copyrightSection.innerHTML = CopyrightSectionComponent(
-					sectionData.textContent,
-					responseError
-				);
-			} else if (sectionIdValue === "footerInfo") {
-				// render footer info
-				const footerInfoSection = document.getElementById("footerInfo");
-				footerInfoSection.innerHTML = FooterInfoSectionComponent(
-					sectionData.textContent,
-					responseError
-				);
-			}
-		});
-
-		const licenseInfo = data.find(
-			(item) => item.sectionId.toUpperCase() === "FOOTERCOMPANYINFO"
-		).textContent;
-
-		const licenseInfoSection = document.getElementById("footerLicenseInfo");
-		licenseInfoSection.innerHTML = LicenseInfoSectionComponent(licenseInfo);
-	}, "footer");
-
-	fetchData((data) => {
-		const socialMediaIcons = [];
-		data.map((socialMediaItem) => {
-			socialMediaIcons.push(
-				`<a href="${
-					socialMediaItem.href
-				}"><h2 class="bi bi-${socialMediaItem.name.toLowerCase()} text-gray-400"></h2></a>`
-			);
-		});
-
-		const socialMediaIconSection = document.getElementById("socialMediaIconSection");
-		socialMediaIconSection.innerHTML = socialMediaIcons.join("");
-	}, "socialMedia");
-
-	fetchData((data) => {
-		const siteMenuSection = document.getElementById("siteMenu");
-		siteMenuSection.innerHTML = SiteMenuSectionComponent(data);
-	}, "siteMenu");
+		promiseRender(() => composeComponent(returnedData.Footer))
+			.then((result) => {
+				const footer = document.getElementById("footer");
+				footer.innerHTML = result;
+			})
+			.catch((error) => {
+				const footer = document.getElementById("footer");
+				footer.innerHTML = error;
+			});
+	}, "components/footer");
 }
-
-// 1. Render
-// 2. Fetch
-// 3. Get Component

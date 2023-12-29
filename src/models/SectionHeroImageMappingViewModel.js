@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database"); // Your Sequelize instance
 
-const SocialMediaModel = sequelize.define(
-	"socialmedia",
+const SectionHeroImageMappingView = sequelize.define(
+	"section_hero_image_mapping_view",
 	{
 		id: {
 			type: DataTypes.STRING,
@@ -10,39 +10,27 @@ const SocialMediaModel = sequelize.define(
 			primaryKey: true,
 			unique: true,
 		},
-		name: {
+		imageId: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		href: {
+		imageHeroHref: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		visibility: {
-			type: DataTypes.INTEGER,
-			allowNull: true,
-		},
-		createdAt: {
+		sectionId: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		createdBy: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-		modifiedAt: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-		modifiedBy: {
+		sectionName: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
 	},
 	{
-		tableName: "socialmedia",
+		tableName: "section_hero_image_mapping_view",
 		timestamps: false,
 	}
 );
 
-module.exports = SocialMediaModel;
+module.exports = SectionHeroImageMappingView;

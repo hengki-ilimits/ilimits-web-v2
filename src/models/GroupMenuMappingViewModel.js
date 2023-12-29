@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database"); // Your Sequelize instance
 
-const SocialMediaModel = sequelize.define(
-	"socialmedia",
+const GroupMenuMappingView = sequelize.define(
+	"group_menu_mapping_view",
 	{
 		id: {
 			type: DataTypes.STRING,
@@ -10,39 +10,35 @@ const SocialMediaModel = sequelize.define(
 			primaryKey: true,
 			unique: true,
 		},
-		name: {
+		groupMenuName: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		href: {
+		groupMenuDisplayName: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		visibility: {
+		menuName: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		menuHref: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		groupMenuVisibility: {
 			type: DataTypes.INTEGER,
 			allowNull: true,
 		},
-		createdAt: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-		createdBy: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-		modifiedAt: {
-			type: DataTypes.STRING,
-			allowNull: true,
-		},
-		modifiedBy: {
-			type: DataTypes.STRING,
+		pos: {
+			type: DataTypes.INTEGER,
 			allowNull: true,
 		},
 	},
 	{
-		tableName: "socialmedia",
+		tableName: "group_menu_mapping_view",
 		timestamps: false,
 	}
 );
 
-module.exports = SocialMediaModel;
+module.exports = GroupMenuMappingView;

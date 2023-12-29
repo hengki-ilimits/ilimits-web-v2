@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database"); // Your Sequelize instance
 
-const SocialMediaModel = sequelize.define(
-	"socialmedia",
+const PromotionOverviewView = sequelize.define(
+	"promotion_overview_view",
 	{
 		id: {
 			type: DataTypes.STRING,
@@ -10,7 +10,15 @@ const SocialMediaModel = sequelize.define(
 			primaryKey: true,
 			unique: true,
 		},
-		name: {
+		title: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		subTitle: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		footNote: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
@@ -18,31 +26,31 @@ const SocialMediaModel = sequelize.define(
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		visibility: {
-			type: DataTypes.INTEGER,
-			allowNull: true,
-		},
-		createdAt: {
+		contentStatus: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		createdBy: {
+		textContent: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		modifiedAt: {
+		imageFileName: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
-		modifiedBy: {
+		imageId: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		imageContentType: {
 			type: DataTypes.STRING,
 			allowNull: true,
 		},
 	},
 	{
-		tableName: "socialmedia",
+		tableName: "promotion_overview_view",
 		timestamps: false,
 	}
 );
 
-module.exports = SocialMediaModel;
+module.exports = PromotionOverviewView;

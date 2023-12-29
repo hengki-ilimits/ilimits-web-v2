@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Display Image</title>
+	</head>
+	<body>
+		<img id="displayedImage" alt="Displayed Image" style="max-width: 100%; height: auto" />
+
+		<script>
+			async function fetchAndDisplayImage() {
+				const imageId = "0018c6mdyfhikpyw"; // Change this to the ID of the image you want to fetch
+				const url = `http://localhost:3000/api/image/${imageId}`;
+
+				try {
+					const response = await fetch(url);
+
+					if (!response.ok) {
+						throw new Error("Image not found");
+					}
+
+					const blob = await response.blob();
+					const imageUrl = URL.createObjectURL(blob);
+
+					const displayedImage = document.getElementById("displayedImage");
+					displayedImage.src = imageUrl;
+				} catch (error) {
+					console.error("Error:", error.message);
+				}
+			}
+
+			fetchAndDisplayImage();
+		</script>
+	</body>
+</html>

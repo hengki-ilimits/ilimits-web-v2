@@ -6,7 +6,7 @@
 		<link rel="icon" href="/assets/img/icon.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="output.css" rel="stylesheet" />
+		<link href="/output.css" rel="stylesheet" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"
 			rel="stylesheet" />
@@ -21,16 +21,16 @@
 		<title>iLimits - The Best International Online Forex Broker</title>
 	</head>
 	<body>
-		<div id="myContainer" class="myContainer mx-auto">
+		<div class="myContainer mx-auto">
 			<nav id="navbar" class="navbar">
 				<div class="w-full flex justify-between items-center">
 					<a href="/" class="h-full">
-						<img src="assets/img/logo.svg" class="h-full" />
+						<img src="/assets/img/logo.svg" class="h-full" />
 					</a>
 					<div class="flex items-center gap-4 h-full hidden xl:flex">
 						<div id="navbarMenu" class="flex gap-4">
 							<div>
-								<a href="#" class="navbarMenuLink">HOME</a>
+								<a href="/" class="navbarMenuLink">HOME</a>
 							</div>
 							<div>
 								<a href="" class="navbarMenuLink">TRADING</a>
@@ -42,7 +42,7 @@
 								<a href="#" class="navbarMenuLink">PLATFORM</a>
 							</div>
 							<div>
-								<a href="route/promotions" class="navbarMenuLink">PROMOTION</a>
+								<a href="/promotions" class="navbarMenuLink">PROMOTION</a>
 							</div>
 							<div>
 								<a href="#" class="navbarMenuLink">ABOUT US</a>
@@ -63,7 +63,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-united-kingdom.png"
+												src="/assets/img/icons/flag-language-circle/flag-united-kingdom.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">English</span>
@@ -73,7 +73,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-indonesia.png"
+												src="/assets/img/icons/flag-language-circle/flag-indonesia.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">Indonesia</span>
@@ -83,7 +83,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-malaysia.png"
+												src="/assets/img/icons/flag-language-circle/flag-malaysia.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">Malaysia</span>
@@ -92,8 +92,12 @@
 							</ul>
 						</div>
 						<div id="navbarLogin" class="flex gap-4">
-							<a href="https://my.ilimits.com/en/login" target="_blank" class="tombol-lg-info">LOGIN</a>
-							<a href="https://my.ilimits.com/en/register" target="_blank" class="tombol-lg">REGISTER NOW</a>
+							<a href="https://my.ilimits.com/en/login" target="_blank" class="tombol-lg-info"
+								>LOGIN</a
+							>
+							<a href="https://my.ilimits.com/en/register" target="_blank" class="tombol-lg"
+								>REGISTER NOW</a
+							>
 						</div>
 					</div>
 					<div class="xl:hidden flex justify-between items-center gap-4">
@@ -112,7 +116,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-united-kingdom.png"
+												src="/assets/img/icons/flag-language-circle/flag-united-kingdom.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">English</span>
@@ -122,7 +126,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-indonesia.png"
+												src="/assets/img/icons/flag-language-circle/flag-indonesia.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">Indonesia</span>
@@ -132,7 +136,7 @@
 									<a class="flex justify-start items-center text-base gap-5">
 										<div>
 											<img
-												src="assets/img/icons/flag-language-circle/flag-malaysia.png"
+												src="/assets/img/icons/flag-language-circle/flag-malaysia.png"
 												class="h-4" />
 										</div>
 										<span class="text-base">Malaysia</span>
@@ -156,12 +160,16 @@
 						<h1 id="closeDrawer" class="bi bi-x-lg cursor-pointer"></h1>
 					</div>
 					<div class="flex flex-row justify-between items-center space-x-2 pb-4">
-						<a href="https://my.ilimits.com/en/login" target="_blank" class="tombol-info-block">LOGIN</a>
-						<a href="https://my.ilimits.com/en/register" target="_blank" class="tombol-block">REGISTER NOW</a>
+						<a href="https://my.ilimits.com/en/login" target="_blank" class="tombol-info-block"
+							>LOGIN</a
+						>
+						<a href="https://my.ilimits.com/en/register" target="_blank" class="tombol-block"
+							>REGISTER NOW</a
+						>
 					</div>
 					<a
-						href="#"
-						class="h-12 px-4 rounded-md drawerSelected cursor-pointer items-center flex font-semibold">
+						href="/"
+						class="h-12 px-4 rounded-md drawerHover cursor-pointer items-center flex font-semibold">
 						Home
 					</a>
 					<a
@@ -181,7 +189,7 @@
 					</a>
 					<a
 						href="/route/promotions"
-						class="h-12 px-4 rounded-md drawerHover cursor-pointer items-center flex font-semibold">
+						class="h-12 px-4 rounded-md drawerSelected cursor-pointer items-center flex font-semibold">
 						Promotion
 					</a>
 					<h5
@@ -191,28 +199,16 @@
 				</div>
 			</div>
 
-			<section id="heroPages"></section>
-
-			<section id="homeFeatures"></section>
-
-			<section id="downloadMetatrader"></section>
+			<section id="promotionDetail"></section>
 
 			<section id="newsletter"></section>
 
 			<footer id="footer"></footer>
 		</div>
-		<!-- <script src="js/pages/home/index.js"></script>
-		<script src="js/components/navbar.js"></script>
-		<script src="js/components/sidebar.js"></script>
-		 -->
-		<script src="js/utils/commonUtils.js"></script>
-		<script src="js/utils/constants.js"></script>
-		<!-- <script src="js/components/navbar.js"></script> -->
-		<script src="js/components/homeHeroPages.js"></script>
-		<script src="js/components/homeFeature.js"></script>
-		<script src="js/components/downloadMetatrader.js"></script>
-		<script src="js/components/newsletter.js"></script>
-		<script src="js/components/footer.js"></script>
-		<script src="js/index.js"></script>
+		<script src="/js/utils/commonUtils.js"></script>
+		<script src="/js/utils/constants.js"></script>
+		<script src="/js/components/newsletter.js"></script>
+		<script src="/js/components/footer.js"></script>
+		<script src="/js/pages/promotions/detail.js"></script>
 	</body>
 </html>

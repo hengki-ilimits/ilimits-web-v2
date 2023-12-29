@@ -5,7 +5,13 @@ module.exports = {
 	content: ["./public/**/*.{html,js}"],
 	theme: {
 		container: {
-			padding: "2rem",
+			padding: {
+				DEFAULT: "1rem",
+				sm: "1rem",
+				lg: "1rem",
+				xl: "1rem",
+				"2xl": "1rem",
+			},
 		},
 		screen: {
 			sm: "640px",
@@ -35,6 +41,7 @@ module.exports = {
 				7680: "480rem",
 			},
 			width: {
+				480: "30rem",
 				1200: "75rem",
 				4800: "300rem",
 			},

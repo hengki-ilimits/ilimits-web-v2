@@ -4,7 +4,7 @@
 
 @layer base {
 	html {
-		font-family: "Noto-sans", system-ui, sans-serif;
+		font-family: "Noto Sans", system-ui, sans-serif;
 	}
 	h1 {
 		@apply text-4xl;
@@ -34,8 +34,7 @@
 		@apply text-base;
 	}
 	body {
-		margin: 0;
-		padding: 0;
+		@apply text-zinc-700 m-0 p-0;
 	}
 }
 
@@ -103,7 +102,7 @@
 	.promotionThumbnails {
 		@apply grid grid-cols-2 md:grid-cols-3 gap-4;
 	}
-	.promotionOverviewContainer {
+	.pageOverviewContainer {
 		@apply flex flex-col justify-start py-8 md:px-8;
 	}
 	.promotionDetailContainer {
@@ -162,9 +161,6 @@
 		@apply w-1/4;
 	}
 
-	#sidebar .outerContainer {
-		@apply flex flex-col w-full h-full overflow-scroll;
-	}
 	.selected {
 		@apply bg-baseGreen;
 	}
@@ -172,17 +168,6 @@
 	.cardItem {
 		@apply w-full sm:max-w-xs hover:border-b-8 hover:border-baseGreen;
 	}
-}
-
-/* custom style*/
-.sidebar-sm {
-	position: fixed;
-	top: 0;
-	z-index: 40;
-	height: 100%;
-	width: 100%;
-	left: 2000px;
-	background-color: white;
 }
 
 #heroPages > .imageContainer {
@@ -336,7 +321,6 @@
 	}
 }
 
-
 /* #Loader */
 
 /* Text Blinking */
@@ -368,7 +352,7 @@
 	max-height: 100px;
 }
 
-.sidebar {
+.drawer {
 	width: 30rem;
 	height: 100vh;
 	position: fixed;
@@ -376,7 +360,6 @@
 	right: -50rem;
 	z-index: 50;
 	backdrop-filter: blur(10rem);
-	/* background-color: white; */
 	transition: 0.2s;
 }
 
@@ -391,16 +374,17 @@
 }
 
 @media (min-width: 1280px) {
-	.sidebar {
+	.drawer {
 		display: none;
 	}
 }
 
 @media (max-width: 640px) {
-	.sidebar {
+	.drawer {
 		width: 100%;
 		right: -50rem;
 	}
+
 	/* #hero > .imageContainer > img {
 		width: 100%;
 		height: auto;
@@ -422,4 +406,3 @@
 	height: 6px; /* Set the desired height for the underline */
 	background-color: hsl(115, 43%, 52%);
 }
-

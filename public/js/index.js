@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// renderNavBar();
+	renderNavBar();
 	renderHomeHeroPages();
 	renderHomeFeature();
 	renderDownloadMetatrader();
 	renderJoinNewsLetter();
 	renderFooter();
-	
+
+	renderDrawer();
+
 	handleChangeLanguage();
 	handleDrawer();
 });

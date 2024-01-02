@@ -21,6 +21,9 @@ module.exports = {
 			"2xl": "1536px",
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"Noto Sans"', ...defaultTheme.fontFamily.sans],
+			},
 			colors: {
 				baseGreen: "hsl(115, 43%, 52%)",
 				baseOrange: "hsl(36, 97%, 62%)",

@@ -99,10 +99,12 @@ function CardItemSectionComponent(contentData) {
 	const container = [];
 
 	contentData.forEach((data) => {
+		const imageId = extractFileName(data.imageFileName);
+
 		const cardItem = [
 			`<a href="${data.href}/${data.id}" class="card card-compact cardItem bg-base-100 shadow-xl">`,
-			`	<figure id="${data.imageId}">`,
-			`		<div class="loaderImg my-20"></div>`,
+			`	<figure id="${imageId.name}">`,
+			`		<div class="loader5"></div>`,
 			`	</figure>`,
 			`	<div class="card-body">`,
 			`		<h2 class="card-title font-bold">${data.title}</h2>`,
@@ -113,20 +115,21 @@ function CardItemSectionComponent(contentData) {
 			`	</div>`,
 			`</a>`,
 		].join("");
-		loaderId.push(data.imageId);
+		loaderId.push(imageId);
 		container.push(cardItem);
 	});
 
 	return container.join("");
 }
 
-function loadImage(imageId) {
+function loadImage(images) {
+	const tempImageName = `/assets/img/temp/${images.name}.${images.format}`;
 	return new Promise((resolve, reject) => {
 		const img = new Image();
 		img.att;
 		img.onload = resolve;
 		img.onerror = reject;
-		img.src = "/api/image/" + imageId;
+		img.src = tempImageName;
 	});
 }
 
@@ -136,9 +139,9 @@ function renderPromotionOverview() {
 	fetchDataPromotion((contentData) => {
 		thumbnailContainer.innerHTML = CardItemSectionComponent(contentData);
 
-		loaderId.map((imageId) => {
-			loadImage(imageId).then((loadedImage) => {
-				const figure = document.getElementById(imageId);
+		loaderId.map((images) => {
+			loadImage(images).then((loadedImage) => {
+				const figure = document.getElementById(images.name);
 				const loader = figure.querySelector("div");
 				figure.removeChild(loader);
 				figure.appendChild(loadedImage.target);

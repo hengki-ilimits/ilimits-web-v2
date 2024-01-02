@@ -230,3 +230,16 @@ function composeComponent(contentData) {
 function SectionPlaceholderComponent() {
 	return `<div class="flex"><div class="loader5 mx-auto"></div></div>`;
 }
+
+function extractFileName(fileName) {
+	const lastDotIndex = fileName.lastIndexOf(".");
+	if (lastDotIndex === -1) {
+		// No extension found
+		return { name: fileName, format: "" };
+	}
+
+	const name = fileName.slice(0, lastDotIndex);
+	const format = fileName.slice(lastDotIndex + 1);
+
+	return { name, format };
+}

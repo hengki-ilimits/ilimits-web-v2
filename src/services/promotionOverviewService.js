@@ -46,6 +46,7 @@ const findAll = async (startIndex) => {
 			promotionOverview.push({
 				id: item.id,
 				imageId: item.imageId,
+				imageFileName: item.imageFileName,
 				title: item.title,
 				subTitle: item.subTitle,
 				footNote: item.footNote,
@@ -53,7 +54,8 @@ const findAll = async (startIndex) => {
 			});
 		});
 
-		return promotionOverview;
+		// return promotionOverview;
+		return [];
 	} catch (error) {
 		console.log(error);
 		throw new Error("Error fetching with filter PromotionOverviewView");

@@ -25,7 +25,8 @@ const routeController = require("../controller/routeController");
 const router = express.Router();
 
 const storage = multer.diskStorage({
-	destination: "./uploads",
+	// destination: "./uploads",
+	destination: "./public/assets/img/temp/",
 	filename: function (req, file, cb) {
 		const fileName = Date.now() + path.extname(file.originalname);
 		cb(null, fileName);

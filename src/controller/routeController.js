@@ -14,6 +14,9 @@ const get = async (req, res) => {
 					redirectPage += "?content=" + id;
 				}
 				break;
+			case "trading":
+				redirectPage = "/trading/";
+				break;
 			case "downloadImage":
 				redirectPage = "/downloadImage.html";
 				break;

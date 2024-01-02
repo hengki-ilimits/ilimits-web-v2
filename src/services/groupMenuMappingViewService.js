@@ -24,9 +24,9 @@ const { getHTML } = require("../utils/commonUtils");
 const findAll = async (filterClause) => {
 	try {
 		let result;
-		if (filterClause) {			
-			result = await GroupMenuMappingViewModel.findAll(filterClause);			
-		} else {			
+		if (filterClause) {
+			result = await GroupMenuMappingViewModel.findAll(filterClause);
+		} else {
 			result = await GroupMenuMappingViewModel.findAll();
 		}
 		return getJsonFormatted(result);
@@ -43,7 +43,7 @@ const getJsonFormatted = (data) => {
 		let contentItem = {
 			menuName: getHTML(groupMenu.menuName, true),
 			groupMenuDisplayName: getHTML(groupMenu.groupMenuDisplayName, true),
-			menuHref: getHTML(groupMenu.menuHref, true),
+			menuHref: groupMenu.menuHref,
 			pos: groupMenu.pos,
 		};
 

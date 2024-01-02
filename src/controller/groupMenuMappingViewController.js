@@ -8,7 +8,16 @@ const fetchAll = async (req, res) => {
 		let groupMenuMapping;
 
 		if (groupMenuName) {
-			groupMenuMapping = await groupMenuMappingViewService.findAll(groupMenuName);
+			const filterClause = {
+				where: {
+					["groupMenuName"]: groupMenuName,
+				},
+				order: [
+					["groupMenuName", "ASC"],
+					["pos", "ASC"],
+				],
+			};
+			groupMenuMapping = await groupMenuMappingViewService.findAll(filterClause);
 		} else {
 			groupMenuMapping = await groupMenuMappingViewService.findAll();
 		}

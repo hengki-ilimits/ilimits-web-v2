@@ -3,6 +3,7 @@ const path = require("path");
 const multer = require("multer");
 
 const heroPageController = require("../controller/sectionHeroImageMappingController");
+const navbarController = require("../controller/navbarController");
 const footerController = require("../controller/footerController");
 const featureController = require("../controller/featureController");
 const downloadPlatformController = require("../controller/downloadPlatformController");
@@ -67,12 +68,13 @@ router.get("/api/promotionOverview/:startIndex", promotionController.fetchAll);
 router.get("/api/promotionOverview/detail/:contentId", promotionController.fetchById);
 //
 
-// SECTION
+// COMPONENTS
 router.get("/api/siteMenu", siteMenuController.fetchAll);
 router.get("/api/licenseInfo", licenseInfoController.fetchAll);
 router.get("/api/socialMedia", socialMediaController.fetchAll);
 
-// COMPONENTS
+// SECTION
+router.get("/api/components/navbar", navbarController.fetchAll);
 router.get("/api/components/heroPage/:sectionName", heroPageController.fetchAll);
 router.get("/api/components/feature/:targetPage", featureController.fetchAll);
 router.get("/api/components/downloadPlatform", downloadPlatformController.fetchAll);

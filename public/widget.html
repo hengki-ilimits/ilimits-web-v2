@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script>
+			// ACCOUNT_STATISTICS_WIDGET_CDN_URL - the address of a page containing the Account Statistics widget.
+			// ACCOUNT_STATISTICS_WIDGET_FOLLOW_LINK - the link used for the Follow button.
+			// INVESTMENT_PLATFORM_ID - the ID of investment platform (MT4, MT5, etc...), number.
+			const ACCOUNT_STATISTICS_WIDGET_CDN_URL =
+				"https://statistics.ilimitsinv.com/en/account-statistics";
+			const ACCOUNT_STATISTICS_WIDGET_FOLLOW_LINK = "https://my.ilimitsinv.com/en/login";
+			const INVESTMENT_PLATFORM_ID = 1;
+			const PLATFORM = "b2copy"; // 'b2copy' | 'mam' | 'pamm'
+			window.addEventListener("message", (event) => {
+				const { type: eventType } = event.data;
+				if (eventType === "ACCOUNT_STATISTICS_WIDGET_LOAD_COMPLETE") {
+					const url = new URL(window.location);
+					const accountId = url.searchParams.get("accountId");
+					const accountIdEventData = {
+						type: "ACCOUNT_STATISTICS_WIDGET_ACCOUNT_ID",
+						payload: { accountId },
+					};
+
+					const investmentPlatformIdEventData = {
+						type: "ACCOUNT_STATISTICS_WIDGET_INVESTMENT_PLATFORM_ID",
+						payload: { investmentPlatformId: INVESTMENT_PLATFORM_ID },
+					};
+					const followLinkEventData = {
+						type: "ACCOUNT_STATISTICS_WIDGET_FOLLOW_LINK",
+						payload: { linkUrl: ACCOUNT_STATISTICS_WIDGET_FOLLOW_LINK },
+					};
+
+					const platformData = {
+						type: "ACCOUNT_STATISTICS_WIDGET_PLATFORM",
+						payload: { platform },
+					};
+					event.source.postMessage(
+						JSON.stringify(accountIdEventData),
+						ACCOUNT_STATISTICS_WIDGET_CDN_URL
+					);
+					event.source.postMessage(
+						JSON.stringify(investmentPlatformIdEventData),
+						ACCOUNT_STATISTICS_WIDGET_CDN_URL
+					);
+					event.source.postMessage(
+						JSON.stringify(followLinkEventData),
+						ACCOUNT_STATISTICS_WIDGET_CDN_URL
+					);
+					event.source.postMessage(JSON.stringify(platformData), ACCOUNT_STATISTICS_WIDGET_CDN_URL);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<iframe src="https://statistics.ilimitsinv.com/"></iframe>
+	</body>
+</html>

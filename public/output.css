@@ -3236,6 +3236,7 @@ body {
   -webkit-backdrop-filter: blur(10rem);
           backdrop-filter: blur(10rem);
   transition: 0.2s;
+  display: flex;
 }
 
 .heroCtaButton {

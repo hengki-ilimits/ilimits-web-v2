@@ -7,7 +7,7 @@ const fetchAll = async (req, res) => {
 	try {
 		let footerContentData = await sectionContentMappingViewService.findAll("footer");
 
-		let socialMediaContentData = await socialMediaService.findAll();
+		let socialMediaContentData = await socialMediaService.findAll();		
 		footerContentData.Footer.socialMedia = [];
 		socialMediaContentData.map((items) => {
 			footerContentData.Footer.socialMedia.push({

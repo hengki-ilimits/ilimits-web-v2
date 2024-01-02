@@ -5,9 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderDownloadMetatrader();
 	renderJoinNewsLetter();
 	renderFooter();
-
 	renderDrawer();
 
-	handleChangeLanguage();
-	handleDrawer();
+	// handleChangeLanguage();
+	// handleDrawer();
 });

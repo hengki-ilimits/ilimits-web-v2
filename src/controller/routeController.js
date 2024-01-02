@@ -23,6 +23,9 @@ const get = async (req, res) => {
 			case "test3":
 				redirectPage = "/test3.html";
 				break;
+			case "widget":
+				redirectPage = "/widget.html";
+				break;
 			default:
 				redirectPage = "index.html";
 		}

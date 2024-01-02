@@ -6,6 +6,7 @@ function initSelectedLanguage() {
 	const optionLanguageMode = ["optionLanguagesMobile", "optionLanguages"];
 	optionLanguageMode.map((item) => {
 		const children = document.getElementById(item).children;
+
 		for (let i = 0; i < children.length; i++) {
 			children[i].classList.remove("drawerSelected");
 			if (children[i].lang == selectedLanguage) {
